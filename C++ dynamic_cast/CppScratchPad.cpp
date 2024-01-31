@@ -5,6 +5,62 @@
 using std::cout;
 using std::endl;
 
+//----------------------- C++ dynamic_cast -------------------------------------------------------------
+//ref link:https://www.youtube.com/watch?v=tRyLVEUSJkM&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=4
+
+
+//class Base {};		// no polymorphism
+class Base	// with polymorphism
+{
+	virtual void f() {};
+};
+class Derived1 : public Base {};
+class Derived2 : public Base {};
+
+void main()
+{
+	Base* b =
+		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
+	if (typeid(*b) == typeid(Derived1))
+	{
+		//van static casting
+		cout << "Derived1" << endl;
+	}
+	else if (typeid(*b) == typeid(Derived2))
+	{
+		cout << "Derived2" << endl;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //----------------------- C++ typeid() -------------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=TFwW36dLoHY&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=7
 
@@ -25,40 +81,40 @@ const tipeinfo& t = typeid(Base);
 
 
 
-//class Base {};		// no polymorphism
-class Base	// with polymorphism
-{
-	virtual void f() {};
-};
-class Derived1 : public Base {};
-class Derived2 : public Base {};
-
-void main()
-{
-	//Base* b =										new Derived2;  // determined by runtime
-	//####random boolean#### return static_cast<Base*>#######
-	srand(time(0));					//seedrandom
-	Base* b =
-		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
-	if (typeid(*b) == typeid(Derived1))
-	{
-		//van static casting
-		cout << "Derived1" << endl;
-	}
-	else if (typeid(*b) == typeid(Derived2))
-	{
-		cout << "Derived2" << endl;
-	}
-
-	//const type_info& t = typeid(Base);
-	//cout << t.name() << endl;
-
-	//Base* b = new Derived1;
-	//cout << typeid(*b).name() << endl;	//*b - redereference
-
-	//cout << typeid(Base).name() << endl;
-	//cout << typeid(Derived1).name() << endl;
-}
+////class Base {};		// no polymorphism
+//class Base	// with polymorphism
+//{
+//	virtual void f() {};
+//};
+//class Derived1 : public Base {};
+//class Derived2 : public Base {};
+//
+//void main()
+//{
+//	//Base* b =										new Derived2;  // determined by runtime
+//	//####random boolean#### return static_cast<Base*>#######
+//	srand(time(0));					//seedrandom
+//	Base* b =
+//		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
+//	if (typeid(*b) == typeid(Derived1))
+//	{
+//		//van static casting
+//		cout << "Derived1" << endl;
+//	}
+//	else if (typeid(*b) == typeid(Derived2))
+//	{
+//		cout << "Derived2" << endl;
+//	}
+//
+//	//const type_info& t = typeid(Base);
+//	//cout << t.name() << endl;
+//
+//	//Base* b = new Derived1;
+//	//cout << typeid(*b).name() << endl;	//*b - redereference
+//
+//	//cout << typeid(Base).name() << endl;
+//	//cout << typeid(Derived1).name() << endl;
+//}
 
 
 
