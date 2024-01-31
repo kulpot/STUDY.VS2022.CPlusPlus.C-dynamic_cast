@@ -1,6 +1,7 @@
 #include <iostream>
-#include <typeinfo>		//ref:C++ typeid()
-#include <time.h>		//ref C++ typeid() // srand(time(0)); -> every random type has to start with a number
+#include <ctime>	//ref:C++ dynamic_cast
+//#include <typeinfo>		//ref:C++ typeid()
+//#include <time.h>		//ref C++ typeid() // srand(time(0)); -> every random type has to start with a number
 //#include <cstdlib> //ref:C++ static_cast	//c standard library - ex. sqaure root(sqrt)
 using std::cout;
 using std::endl;
@@ -21,18 +22,22 @@ class Derived2 : public Base {};
 
 void main()
 {
+	srand(time(0));
 	Base* b =
 		(rand() % 2 == 0) ? 
 		static_cast<Base*>(new Derived1) 
 		: new Derived2;
-	Derived1* d1 = dynamic_cast<Derived1*>(b);	//<----- dynamic_casting
-	if(d1 != NULL) // explicit same as if(d1 != 0)
+	//####RTTI################
+	Derived1* d1 = dynamic_cast<Derived1*>(b);	//<----- dynamic_casting return null(or0) if Derived2
+	//if(d1 != NULL) // explicit same as if(d1 != 0)
 	if(d1)			// C++ trick that converts a pointer to boolean type
 	//if (typeid(*b) == typeid(Derived1))
 	{
 		cout << "Derived1" << endl;
 	}
-	else if (typeid(*b) == typeid(Derived2))
+	Derived2* d2 = dynamic_cast<Derived2*>(b);	//<----- dynamic_casting return null(or0) if Derived1
+	if(d2)
+	//else if (typeid(*b) == typeid(Derived2))
 	{
 		cout << "Derived2" << endl;
 	}
