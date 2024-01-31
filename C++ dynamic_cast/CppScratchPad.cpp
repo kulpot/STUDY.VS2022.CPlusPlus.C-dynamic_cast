@@ -8,6 +8,7 @@ using std::endl;
 //----------------------- C++ dynamic_cast -------------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=tRyLVEUSJkM&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=4
 
+//Dynamic_cast - is another RTTI(RunTimeTypeIdentification)
 
 //class Base {};		// no polymorphism
 class Base	// with polymorphism
