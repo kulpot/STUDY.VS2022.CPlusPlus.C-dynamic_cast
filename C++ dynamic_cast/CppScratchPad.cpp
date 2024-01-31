@@ -8,7 +8,8 @@ using std::endl;
 //----------------------- C++ dynamic_cast -------------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=tRyLVEUSJkM&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=4
 
-//Dynamic_cast - is another RTTI(RunTimeTypeIdentification)
+//Dynamic_cast - is another RTTI(RunTimeTypeIdentification) checking
+//Static_cast - compile time type checking
 
 //class Base {};		// no polymorphism
 class Base	// with polymorphism
@@ -24,7 +25,6 @@ void main()
 		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
 	if (typeid(*b) == typeid(Derived1))
 	{
-		//van static casting
 		cout << "Derived1" << endl;
 	}
 	else if (typeid(*b) == typeid(Derived2))
