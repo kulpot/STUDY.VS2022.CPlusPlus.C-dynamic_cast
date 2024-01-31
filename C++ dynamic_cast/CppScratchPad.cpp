@@ -22,8 +22,13 @@ class Derived2 : public Base {};
 void main()
 {
 	Base* b =
-		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
-	if (typeid(*b) == typeid(Derived1))
+		(rand() % 2 == 0) ? 
+		static_cast<Base*>(new Derived1) 
+		: new Derived2;
+	Derived1* d1 = dynamic_cast<Derived1*>(b);	//<----- dynamic_casting
+	if(d1 != NULL) // explicit same as if(d1 != 0)
+	if(d1)			// C++ trick that converts a pointer to boolean type
+	//if (typeid(*b) == typeid(Derived1))
 	{
 		cout << "Derived1" << endl;
 	}
